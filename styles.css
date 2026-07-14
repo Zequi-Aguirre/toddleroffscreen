@@ -119,7 +119,7 @@ a { color: inherit; text-decoration: none; }
    in the first group's original spot — so the reset is invisible. */
 .marquee { background: var(--sage); overflow: hidden; padding: .7rem 0; }
 .marquee__track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-.marquee__group { display: flex; flex-shrink: 0; align-items: center; gap: 2.2rem; padding-right: 2.2rem; }
+.marquee__group { display: flex; flex-shrink: 0; align-items: center; gap: 4.4rem; padding-right: 4.4rem; }
 .marquee__group span { color: #fff; font-family: 'Baloo 2'; font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
 @keyframes scroll {
   from { transform: translateX(0); }
