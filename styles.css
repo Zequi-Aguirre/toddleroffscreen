@@ -113,11 +113,22 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700; font-size: .92rem; color: var(--brown); box-shadow: var(--shadow-sm);
 }
 
-/* ---------- Marquee ---------- */
+/* ---------- Marquee (seamless infinite loop) ----------
+   Two identical groups sit side by side. The track shifts left by
+   exactly one group width (-50%), at which point the second group is
+   in the first group's original spot — so the reset is invisible. */
 .marquee { background: var(--sage); overflow: hidden; padding: .7rem 0; }
-.marquee__track { display: flex; gap: 2.6rem; width: max-content; animation: scroll 26s linear infinite; }
-.marquee__track span { color: #fff; font-family: 'Baloo 2'; font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
-@keyframes scroll { to { transform: translateX(-50%); } }
+.marquee__track { display: flex; width: max-content; animation: scroll 26s linear infinite; }
+.marquee__group { display: flex; gap: 2.6rem; padding-right: 2.6rem; }
+.marquee__group span { color: #fff; font-family: 'Baloo 2'; font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}
 
 /* ---------- Section shells ---------- */
 section { padding: 4.4rem 1.2rem; }
