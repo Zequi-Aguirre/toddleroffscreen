@@ -1,5 +1,11 @@
 // ===== Toddler Off Screen — interactions =====
 
+// Logo → always scroll to the very top (avoids the sticky-header offset creep)
+document.querySelector('.nav__brand')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // Mobile nav toggle
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
