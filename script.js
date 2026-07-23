@@ -25,35 +25,106 @@ form?.addEventListener('submit', (e) => {
   form.reset();
 });
 
-// Gallery lightbox (click a thumbnail to enlarge)
+// ===== Reusable media gallery (ABC + Egg) with arrow nav + lightbox =====
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
+const lightboxStage = document.getElementById('lightboxStage');
 const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
 
-function openLightbox(src, alt) {
-  lightboxImg.src = src;
-  lightboxImg.alt = alt || '';
+let activeGallery = null; // gallery instance currently open in the lightbox
+
+function pauseAllVideos(root) {
+  root.querySelectorAll('video').forEach(v => { v.pause(); });
+}
+
+function renderLightbox(gallery) {
+  const slide = gallery.slides[gallery.index];
+  const type = slide.dataset.type;
+  const src = slide.dataset.full;
+  lightboxStage.innerHTML = '';
+  if (type === 'video') {
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    lightboxStage.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = slide.querySelector('img')?.alt || '';
+    lightboxStage.appendChild(img);
+  }
+}
+
+function openLightbox(gallery) {
+  activeGallery = gallery;
+  renderLightbox(gallery);
   lightbox.hidden = false;
   document.body.style.overflow = 'hidden';
 }
+
 function closeLightbox() {
   lightbox.hidden = true;
-  lightboxImg.src = '';
+  pauseAllVideos(lightboxStage);
+  lightboxStage.innerHTML = '';
   document.body.style.overflow = '';
+  activeGallery = null;
 }
 
-document.querySelectorAll('.gallery__thumb').forEach(thumb => {
-  thumb.addEventListener('click', () => {
-    const img = thumb.querySelector('img');
-    openLightbox(thumb.dataset.full, img?.alt);
+function initGallery(root) {
+  const viewer = root.querySelector('[data-gallery-viewer]');
+  const slides = Array.from(root.querySelectorAll('.gallery__slide'));
+  const thumbs = Array.from(root.querySelectorAll('.gallery__thumb'));
+  const prevBtn = root.querySelector('[data-gallery-prev]');
+  const nextBtn = root.querySelector('[data-gallery-next]');
+  if (!slides.length) return;
+
+  const gallery = { root, slides, index: 0 };
+
+  function show(i) {
+    gallery.index = (i + slides.length) % slides.length; // wrap-around
+    slides.forEach((s, n) => s.classList.toggle('is-active', n === gallery.index));
+    thumbs.forEach((t, n) => t.classList.toggle('is-active', n === gallery.index));
+    pauseAllVideos(viewer);
+    if (activeGallery === gallery) renderLightbox(gallery);
+  }
+
+  prevBtn?.addEventListener('click', () => show(gallery.index - 1));
+  nextBtn?.addEventListener('click', () => show(gallery.index + 1));
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => show(Number(thumb.dataset.index)));
   });
+
+  // Click the current image (not video) to enlarge in the lightbox
+  slides.forEach(slide => {
+    if (slide.dataset.type === 'video') return;
+    slide.addEventListener('click', () => openLightbox(gallery));
+  });
+
+  show(0);
+  return gallery;
+}
+
+document.querySelectorAll('[data-gallery]').forEach(initGallery);
+
+lightboxPrev?.addEventListener('click', () => {
+  if (activeGallery) activeGallery.root.querySelector('[data-gallery-prev]').click();
+});
+lightboxNext?.addEventListener('click', () => {
+  if (activeGallery) activeGallery.root.querySelector('[data-gallery-next]').click();
 });
 lightboxClose?.addEventListener('click', closeLightbox);
 lightbox?.addEventListener('click', (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lightbox && !lightbox.hidden) closeLightbox();
+  if (!lightbox || lightbox.hidden) return;
+  if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowLeft') lightboxPrev?.click();
+  else if (e.key === 'ArrowRight') lightboxNext?.click();
 });
 
 // Current year
