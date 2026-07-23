@@ -25,6 +25,37 @@ form?.addEventListener('submit', (e) => {
   form.reset();
 });
 
+// Gallery lightbox (click a thumbnail to enlarge)
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.gallery__thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    const img = thumb.querySelector('img');
+    openLightbox(thumb.dataset.full, img?.alt);
+  });
+});
+lightboxClose?.addEventListener('click', closeLightbox);
+lightbox?.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightbox && !lightbox.hidden) closeLightbox();
+});
+
 // Current year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
