@@ -192,6 +192,7 @@ section { padding: 4.4rem 1.2rem; }
   position: relative; box-sizing: border-box; width: 100%;
   border-radius: var(--r-md); overflow: hidden;
   display: flex; align-items: center; justify-content: center; background: #000;
+  touch-action: pan-y; /* keep vertical scroll; capture horizontal swipes for nav */
 }
 .gallery__slide { display: none; cursor: zoom-in; width: 100%; }
 .gallery__slide.is-active { display: flex; align-items: center; justify-content: center; }
@@ -271,6 +272,7 @@ section { padding: 4.4rem 1.2rem; }
   display: flex; align-items: center; justify-content: center;
   background: #fff; padding: .7rem; border: 4px dashed var(--pink);
   border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
+  touch-action: pan-y; /* keep vertical scroll; capture horizontal swipes for nav */
 }
 .lightbox__stage img,
 .lightbox__stage video {

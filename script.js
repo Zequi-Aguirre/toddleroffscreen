@@ -38,6 +38,40 @@ function pauseAllVideos(root) {
   root.querySelectorAll('video').forEach(v => { v.pause(); });
 }
 
+// Touch-swipe navigation: swipe LEFT → onNext, swipe RIGHT → onPrev.
+// Only fires when the gesture is clearly horizontal so vertical page
+// scrolling still works. `touch-action: pan-y` (set in CSS) lets the
+// browser keep vertical scroll while we capture horizontal swipes.
+function attachSwipeNav(el, onPrev, onNext) {
+  if (!el) return;
+  const THRESHOLD = 45; // px of horizontal travel to count as a swipe
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+
+  el.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    tracking = true;
+  }, { passive: true });
+
+  el.addEventListener('touchend', (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    if (Math.abs(dx) < THRESHOLD) return;      // too small — ignore
+    if (Math.abs(dx) <= Math.abs(dy)) return;  // not predominantly horizontal — let it scroll
+    if (dx < 0) onNext();                       // swipe left → next
+    else onPrev();                              // swipe right → previous
+  }, { passive: true });
+
+  el.addEventListener('touchcancel', () => { tracking = false; }, { passive: true });
+}
+
 function renderLightbox(gallery) {
   const slide = gallery.slides[gallery.index];
   const type = slide.dataset.type;
@@ -111,6 +145,9 @@ function initGallery(root) {
   prevBtn?.addEventListener('click', () => show(gallery.index - 1));
   nextBtn?.addEventListener('click', () => show(gallery.index + 1));
 
+  // Touch-swipe on the inline main viewer (works over image + video frame)
+  attachSwipeNav(viewer, () => show(gallery.index - 1), () => show(gallery.index + 1));
+
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => show(Number(thumb.dataset.index)));
   });
@@ -145,6 +182,13 @@ lightboxPrev?.addEventListener('click', () => {
 lightboxNext?.addEventListener('click', () => {
   if (activeGallery) activeGallery.root.querySelector('[data-gallery-next]').click();
 });
+// Touch-swipe on the lightbox stage (image + video frame)
+attachSwipeNav(
+  lightboxStage,
+  () => { if (activeGallery) lightboxPrev?.click(); },
+  () => { if (activeGallery) lightboxNext?.click(); }
+);
+
 lightboxClose?.addEventListener('click', closeLightbox);
 lightbox?.addEventListener('click', (e) => {
   if (e.target === lightbox) closeLightbox();
