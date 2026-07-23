@@ -160,24 +160,6 @@ section { padding: 4.4rem 1.2rem; }
   background: var(--mustard); color: var(--brown); font-family: 'Baloo 2'; font-weight: 800;
   padding: .4rem 1rem; border-radius: 999px; box-shadow: var(--shadow-sm); font-size: .9rem;
 }
-.featured__frame {
-  background: linear-gradient(135deg, var(--pink-soft), #fff);
-  border-radius: var(--r-lg); padding: 1.6rem; box-shadow: var(--shadow-lg);
-  border: 5px solid #fff;
-}
-.featured__cover {
-  background: #fff; border: 4px dashed var(--pink); border-radius: var(--r-md);
-  padding: 2.2rem 1.4rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .5rem;
-}
-.featured__cover--mini { padding: 1.2rem 1.2rem; gap: .35rem; margin-bottom: 1rem; }
-.featured__cover--mini .featured__abc { font-size: 2.4rem; }
-.featured__cover--mini .featured__book { font-size: 1.3rem; }
-.featured__cover--mini .featured__stickers { font-size: 1.4rem; margin: .35rem 0; }
-.featured__abc { font-family: 'Baloo 2'; font-weight: 800; font-size: 3.4rem; color: var(--pink); letter-spacing: .05em; line-height: 1; }
-.featured__book { font-family: 'Baloo 2'; font-weight: 800; font-size: 1.7rem; color: var(--brown); }
-.featured__ages { color: var(--brown-soft); font-weight: 700; font-size: .9rem; }
-.featured__stickers { display: flex; gap: .55rem; font-size: 1.8rem; margin: .6rem 0; }
-.featured__pages { background: var(--sage); color: #fff; font-family: 'Baloo 2'; font-weight: 700; padding: .4rem 1.2rem; border-radius: 999px; }
 .featured__body .eyebrow { text-align: left; }
 .featured__body h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .6rem; }
 .featured__desc { color: var(--brown-soft); font-size: 1.06rem; }
