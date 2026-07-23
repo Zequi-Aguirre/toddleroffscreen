@@ -79,15 +79,32 @@ function initGallery(root) {
   const thumbs = Array.from(root.querySelectorAll('.gallery__thumb'));
   const prevBtn = root.querySelector('[data-gallery-prev]');
   const nextBtn = root.querySelector('[data-gallery-next]');
+  const strip = root.querySelector('[data-gallery-strip]');
+  const thumbsTrack = root.querySelector('[data-gallery-thumbs]');
+  const thumbsPrev = root.querySelector('[data-gallery-thumbs-prev]');
+  const thumbsNext = root.querySelector('[data-gallery-thumbs-next]');
   if (!slides.length) return;
 
   const gallery = { root, slides, index: 0 };
+
+  // Show the thumb-strip arrows only when the thumbs actually overflow
+  function updateStripOverflow() {
+    if (!strip || !thumbsTrack) return;
+    const overflows = thumbsTrack.scrollWidth - thumbsTrack.clientWidth > 2;
+    strip.classList.toggle('has-overflow', overflows);
+  }
+
+  function scrollActiveThumbIntoView() {
+    const active = thumbs[gallery.index];
+    active?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+  }
 
   function show(i) {
     gallery.index = (i + slides.length) % slides.length; // wrap-around
     slides.forEach((s, n) => s.classList.toggle('is-active', n === gallery.index));
     thumbs.forEach((t, n) => t.classList.toggle('is-active', n === gallery.index));
     pauseAllVideos(viewer);
+    scrollActiveThumbIntoView();
     if (activeGallery === gallery) renderLightbox(gallery);
   }
 
@@ -97,6 +114,18 @@ function initGallery(root) {
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => show(Number(thumb.dataset.index)));
   });
+
+  // Thumbnail-strip side arrows: scroll roughly one thumbnail-width per tap
+  function stripStep() {
+    const firstThumb = thumbs[0];
+    const gap = 12;
+    return firstThumb ? firstThumb.offsetWidth + gap : thumbsTrack.clientWidth * 0.8;
+  }
+  thumbsPrev?.addEventListener('click', () => thumbsTrack?.scrollBy({ left: -stripStep(), behavior: 'smooth' }));
+  thumbsNext?.addEventListener('click', () => thumbsTrack?.scrollBy({ left: stripStep(), behavior: 'smooth' }));
+
+  updateStripOverflow();
+  window.addEventListener('resize', updateStripOverflow);
 
   // Click the current image (not video) to enlarge in the lightbox
   slides.forEach(slide => {
