@@ -151,6 +151,71 @@
     </div>
   </section>
 
+  <!-- ============ EGG BOOK (2nd featured + on-site gallery) ============ -->
+  <section class="eggbook" id="egg">
+    <div class="eggbook__inner">
+      <div class="eggbook__head">
+        <p class="eyebrow">New book · See it here first</p>
+        <h2>What's Inside the Egg?</h2>
+        <p class="eggbook__subtitle">🔦 Flashlight Reveal Game</p>
+      </div>
+
+      <div class="eggbook__grid">
+        <!-- GALLERY -->
+        <div class="gallery">
+          <div class="gallery__main">
+            <video class="gallery__video" controls playsinline preload="metadata" muted
+                   poster="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp">
+              <source src="books/Whats_Inside_The_Egg/sbpb3rel6qawhhdeu8rw.mp4" type="video/mp4" />
+              Your browser doesn't support the video tag.
+            </video>
+          </div>
+          <div class="gallery__thumbs">
+            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp">
+              <img src="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" alt="What's Inside the Egg? activity book page" loading="lazy" />
+            </button>
+            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp">
+              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp" alt="Egg reveal page with flashlight" loading="lazy" />
+            </button>
+            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg">
+              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg" alt="Baby animal matching page" loading="lazy" />
+            </button>
+            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg">
+              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg" alt="Printed activity page in use" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <!-- COPY -->
+        <div class="eggbook__body">
+          <p class="featured__desc">Turn learning into magic. Kids shine a flashlight behind each egg — or brush on a little olive oil — to reveal the baby animal hiding inside, then match it to the right animal. A hands-on, screen-free game that builds matching, vocabulary, and fine-motor skills.</p>
+          <ul class="featured__list">
+            <li>✅ 3 animal pages + 3 matching egg pages + 3 guide pages</li>
+            <li>✅ Flashlight OR olive-oil reveal, plus matching play</li>
+            <li>✅ Instant PDF download, print at home (A4 &amp; US Letter)</li>
+            <li>✅ Made for toddlers &amp; preschoolers — screen-free fun</li>
+          </ul>
+          <div class="price">
+            <span class="price__now">$2.99</span>
+            <span class="price__was">$3.99</span>
+            <span class="price__save">25% off</span>
+          </div>
+          <div class="featured__cta">
+            <!-- TODO(owner): replace with Stripe payment link when ready -->
+            <a class="btn btn--primary btn--lg" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Get it on Etsy →</a>
+            <span class="featured__note">🔒 Secure checkout · Instant download</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightweight click-to-enlarge overlay -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close">✕</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+  </div>
+
   <!-- ============ PRODUCTS ============ -->
   <section class="products" id="shop">
     <div class="section__head">
@@ -168,6 +233,20 @@
         <p>57 pages of A–Z tracing, coloring &amp; matching fun.</p>
         <div class="product__foot">
           <span class="product__price">$9.74</span>
+          <a class="btn btn--sm btn--primary" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Shop</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__thumb product__thumb--egg">
+          <span class="product__emoji">🥚</span>
+          <span class="product__tag">Available now</span>
+        </div>
+        <h3>What's Inside the Egg?</h3>
+        <p>A flashlight reveal &amp; matching game for curious toddlers.</p>
+        <div class="product__foot">
+          <span class="product__price">$2.99</span>
+          <!-- TODO(owner): replace with Stripe payment link when ready -->
           <a class="btn btn--sm btn--primary" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Shop</a>
         </div>
       </article>
