@@ -116,15 +116,59 @@
     <div class="featured__inner">
       <div class="featured__media">
         <span class="featured__flag">⭐ Bestseller</span>
-        <div class="featured__frame">
-          <div class="featured__cover">
-            <span class="featured__abc">ABC</span>
-            <span class="featured__book">Activity Book</span>
-            <span class="featured__ages">A to Z Learning Fun · Ages 3–4</span>
-            <div class="featured__stickers">
-              <span>🍎</span><span>🐊</span><span>🐝</span><span>🌈</span><span>🧸</span><span>🦓</span>
+        <div class="featured__cover featured__cover--mini">
+          <span class="featured__abc">ABC</span>
+          <span class="featured__book">Activity Book</span>
+          <span class="featured__ages">A to Z Learning Fun · Ages 3–4</span>
+          <div class="featured__stickers">
+            <span>🍎</span><span>🐊</span><span>🐝</span><span>🌈</span><span>🧸</span><span>🦓</span>
+          </div>
+          <span class="featured__pages">57 Printable Pages</span>
+        </div>
+
+        <!-- ABC on-site media gallery -->
+        <div class="gallery" data-gallery>
+          <div class="gallery__main">
+            <button class="gallery__arrow gallery__arrow--prev" type="button" data-gallery-prev aria-label="Previous">‹</button>
+            <div class="gallery__viewer" data-gallery-viewer>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/il_1140xN.8226881498_606t.webp" data-type="image">
+                <img src="books/ABC_Activity_Book/il_1140xN.8226881498_606t.webp" alt="ABC Activity Book cover" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/il_1140xN.8226916292_9nva.webp" data-type="image">
+                <img src="books/ABC_Activity_Book/il_1140xN.8226916292_9nva.webp" alt="ABC Activity Book letter tracing page" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/il_1140xN.8227085910_ikw4.webp" data-type="image">
+                <img src="books/ABC_Activity_Book/il_1140xN.8227085910_ikw4.webp" alt="ABC Activity Book coloring & matching page" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/il_1140xN.8274793097_j3vu.webp" data-type="image">
+                <img src="books/ABC_Activity_Book/il_1140xN.8274793097_j3vu.webp" alt="ABC Activity Book activity page in use" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/il_1140xN.8274794619_57n5.webp" data-type="image">
+                <img src="books/ABC_Activity_Book/il_1140xN.8274794619_57n5.webp" alt="ABC Activity Book printed pages" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/tb679wetrrbi8t08zqbp.mp4" data-type="video">
+                <video controls playsinline preload="metadata" muted poster="books/ABC_Activity_Book/il_1140xN.8226881498_606t.webp">
+                  <source src="books/ABC_Activity_Book/tb679wetrrbi8t08zqbp.mp4" type="video/mp4" />
+                  Your browser doesn't support the video tag.
+                </video>
+              </div>
+              <div class="gallery__slide" data-full="books/ABC_Activity_Book/x2p4ayl9wpex0mfpgzog.mp4" data-type="video">
+                <video controls playsinline preload="metadata" muted poster="books/ABC_Activity_Book/il_1140xN.8226916292_9nva.webp">
+                  <source src="books/ABC_Activity_Book/x2p4ayl9wpex0mfpgzog.mp4" type="video/mp4" />
+                  Your browser doesn't support the video tag.
+                </video>
+              </div>
             </div>
-            <span class="featured__pages">57 Printable Pages</span>
+            <button class="gallery__arrow gallery__arrow--next" type="button" data-gallery-next aria-label="Next">›</button>
+          </div>
+          <div class="gallery__thumbs" data-gallery-thumbs>
+            <button class="gallery__thumb" type="button" data-index="0"><img src="books/ABC_Activity_Book/il_1140xN.8226881498_606t.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="1"><img src="books/ABC_Activity_Book/il_1140xN.8226916292_9nva.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="2"><img src="books/ABC_Activity_Book/il_1140xN.8227085910_ikw4.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="3"><img src="books/ABC_Activity_Book/il_1140xN.8274793097_j3vu.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="4"><img src="books/ABC_Activity_Book/il_1140xN.8274794619_57n5.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb gallery__thumb--video" type="button" data-index="5"><img src="books/ABC_Activity_Book/il_1140xN.8226881498_606t.webp" alt="" loading="lazy" /><span class="gallery__play">▶</span></button>
+            <button class="gallery__thumb gallery__thumb--video" type="button" data-index="6"><img src="books/ABC_Activity_Book/il_1140xN.8226916292_9nva.webp" alt="" loading="lazy" /><span class="gallery__play">▶</span></button>
           </div>
         </div>
       </div>
@@ -144,7 +188,8 @@
           <span class="price__save">25% off</span>
         </div>
         <div class="featured__cta">
-          <a class="btn btn--primary btn--lg" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Get it on Etsy →</a>
+          <!-- TODO(owner): replace with Stripe payment link when ready -->
+          <a class="btn btn--primary btn--lg" href="https://www.etsy.com/listing/4534594138/abc-activity-book-preschool-a-z-letter" target="_blank" rel="noopener">Get it on Etsy →</a>
           <span class="featured__note">🔒 Secure checkout · Instant download</span>
         </div>
       </div>
@@ -162,27 +207,37 @@
 
       <div class="eggbook__grid">
         <!-- GALLERY -->
-        <div class="gallery">
+        <div class="gallery" data-gallery>
           <div class="gallery__main">
-            <video class="gallery__video" controls playsinline preload="metadata" muted
-                   poster="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp">
-              <source src="books/Whats_Inside_The_Egg/sbpb3rel6qawhhdeu8rw.mp4" type="video/mp4" />
-              Your browser doesn't support the video tag.
-            </video>
+            <button class="gallery__arrow gallery__arrow--prev" type="button" data-gallery-prev aria-label="Previous">‹</button>
+            <div class="gallery__viewer" data-gallery-viewer>
+              <div class="gallery__slide" data-full="books/Whats_Inside_The_Egg/sbpb3rel6qawhhdeu8rw.mp4" data-type="video">
+                <video controls playsinline preload="metadata" muted poster="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp">
+                  <source src="books/Whats_Inside_The_Egg/sbpb3rel6qawhhdeu8rw.mp4" type="video/mp4" />
+                  Your browser doesn't support the video tag.
+                </video>
+              </div>
+              <div class="gallery__slide" data-full="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" data-type="image">
+                <img src="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" alt="What's Inside the Egg? activity book page" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp" data-type="image">
+                <img src="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp" alt="Egg reveal page with flashlight" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg" data-type="image">
+                <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg" alt="Baby animal matching page" loading="lazy" />
+              </div>
+              <div class="gallery__slide" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg" data-type="image">
+                <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg" alt="Printed activity page in use" loading="lazy" />
+              </div>
+            </div>
+            <button class="gallery__arrow gallery__arrow--next" type="button" data-gallery-next aria-label="Next">›</button>
           </div>
-          <div class="gallery__thumbs">
-            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp">
-              <img src="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" alt="What's Inside the Egg? activity book page" loading="lazy" />
-            </button>
-            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp">
-              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp" alt="Egg reveal page with flashlight" loading="lazy" />
-            </button>
-            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg">
-              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg" alt="Baby animal matching page" loading="lazy" />
-            </button>
-            <button class="gallery__thumb" type="button" data-full="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg">
-              <img src="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg" alt="Printed activity page in use" loading="lazy" />
-            </button>
+          <div class="gallery__thumbs" data-gallery-thumbs>
+            <button class="gallery__thumb gallery__thumb--video" type="button" data-index="0"><img src="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" alt="" loading="lazy" /><span class="gallery__play">▶</span></button>
+            <button class="gallery__thumb" type="button" data-index="1"><img src="books/Whats_Inside_The_Egg/il_1140xN.8275774308_w3pm.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="2"><img src="books/Whats_Inside_The_Egg/il_1140xN.8323690119_ba7p.webp" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="3"><img src="books/Whats_Inside_The_Egg/il_1140xN.8323691391_kre7.jpg" alt="" loading="lazy" /></button>
+            <button class="gallery__thumb" type="button" data-index="4"><img src="books/Whats_Inside_The_Egg/il_1140xN.8323691399_ktza.jpg" alt="" loading="lazy" /></button>
           </div>
         </div>
 
@@ -202,7 +257,7 @@
           </div>
           <div class="featured__cta">
             <!-- TODO(owner): replace with Stripe payment link when ready -->
-            <a class="btn btn--primary btn--lg" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Get it on Etsy →</a>
+            <a class="btn btn--primary btn--lg" href="https://www.etsy.com/listing/4541001032/whats-inside-the-egg-printable" target="_blank" rel="noopener">Get it on Etsy →</a>
             <span class="featured__note">🔒 Secure checkout · Instant download</span>
           </div>
         </div>
@@ -211,9 +266,11 @@
   </section>
 
   <!-- Lightweight click-to-enlarge overlay -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Media preview" hidden>
     <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close">✕</button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" type="button" aria-label="Previous">‹</button>
+    <div class="lightbox__stage" id="lightboxStage"></div>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" type="button" aria-label="Next">›</button>
   </div>
 
   <!-- ============ PRODUCTS ============ -->
@@ -233,7 +290,8 @@
         <p>57 pages of A–Z tracing, coloring &amp; matching fun.</p>
         <div class="product__foot">
           <span class="product__price">$9.74</span>
-          <a class="btn btn--sm btn--primary" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Shop</a>
+          <!-- TODO(owner): replace with Stripe payment link when ready -->
+          <a class="btn btn--sm btn--primary" href="https://www.etsy.com/listing/4534594138/abc-activity-book-preschool-a-z-letter" target="_blank" rel="noopener">Shop</a>
         </div>
       </article>
 
@@ -247,7 +305,7 @@
         <div class="product__foot">
           <span class="product__price">$2.99</span>
           <!-- TODO(owner): replace with Stripe payment link when ready -->
-          <a class="btn btn--sm btn--primary" href="https://www.etsy.com/shop/ToddlerOffScreen" target="_blank" rel="noopener">Shop</a>
+          <a class="btn btn--sm btn--primary" href="https://www.etsy.com/listing/4541001032/whats-inside-the-egg-printable" target="_blank" rel="noopener">Shop</a>
         </div>
       </article>
 
